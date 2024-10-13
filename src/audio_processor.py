@@ -1,11 +1,22 @@
 from pydub import AudioSegment
 import os
-from pytube import YouTube
+import yt_dlp
 
 def download_audio(url, download_path):
-    yt = YouTube(url)
-    audio_stream = yt.streams.filter(only_audio=True).first()
-    audio_path = audio_stream.download(output_path=download_path)
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+        'outtmpl': os.path.join(download_path, '%(title)s.%(ext)s')
+    }
+
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info_dict = ydl.extract_info(url, download=True)
+        audio_path = ydl.prepare_filename(info_dict).replace('.webm', '.mp3')
+    
     return audio_path
 
 def clip_audio(input_path, output_path, clip_duration=10):
