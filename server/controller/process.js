@@ -11,17 +11,16 @@ const processRequest = (req, res) => {
   const command = `python ${scriptPath} "${singer}" ${num_songs} --clip-duration ${clip_duration} --output-file final_output.mp3 "${email_id}"`;
 
   exec(command, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error occurred: ${error.message}`);  
-      res.status(500).json({ message: `Script execution failed: ${stderr || error.message}` });
-    } 
-    if (stderr) {
-        console.error(`Script stderr: ${stderr}`);
-        return res.status(500).json({ message: `Error: ${stderr}` });
+    if (error || stderr) {
+      console.error(`Error occurred: ${error.message}`);
+      return res.status(500).json({ message: `Error: ${stderr || error.message}` });
     }
 
-    res.status(200).json({ message: `Script output: ${stdout}` });
+    // Instead of sending back all stdout, send a simpler message
+    const successMessage = "The mashup process has been completed successfully.";
+    res.status(200).json({ message: successMessage });
   });
+
 };
 
 module.exports = { processRequest };
