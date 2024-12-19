@@ -32,19 +32,19 @@ const Form = ({onSubmit}) => {
         <div className='fields flex flex-col gap-2'>
             <div className='singer-name gap-2 flex items-center'>
                 <p className='w-36'>Singer: </p>
-                <Input color='blue' type='text' size='sm' name='singer' value={formData.singer} onChange={handleChange} placeholder='Who is your favourite?'/>
+                <Input color='blue' type='text' size='sm' name='singer' className='shadow-sm' value={formData.singer} onChange={handleChange} placeholder='Who is your favourite?'/>
             </div>
             <div className='videos-no gap-2 flex items-center'>
                 <p className='w-36'>No. of videos: </p>
-                <Input color='blue' type='number' size='sm' name='num_songs' value={formData.numVideos} onChange={handleChange} placeholder='10'/>
+                <Input color='blue' type='number' size='sm' name='num_songs' className='shadow-sm' value={formData.numVideos} onChange={handleChange} placeholder='10'/>
             </div>
             <div className='duration gap-2 flex items-center'>
                 <p className='w-36'>Duration: </p>
-                <Input color='blue' type='number' size='sm' name='clip_duration' value={formData.duration} onChange={handleChange} placeholder='10 (in seconds)'/>
+                <Input color='blue' type='number' size='sm' name='clip_duration' className='shadow-sm' value={formData.duration} onChange={handleChange} placeholder='10 (in seconds)'/>
             </div>
             <div className='email gap-2 flex items-center'>
                 <p className='w-36'>Email Id: </p>
-                <Input color='blue' type='email' size='sm' name='email_id' value={formData.email} onChange={handleChange} placeholder='abc@gmail.com'/>
+                <Input color='blue' type='email' size='sm' name='email_id' className='shadow-sm' value={formData.email} onChange={handleChange} placeholder='abc@gmail.com'/>
             </div>
         </div>
         {/* <button type='submit' className='px-4 py-1 '>

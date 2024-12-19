@@ -9,6 +9,9 @@
 - Provides real-time feedback on the downloading process.
 - Sends results to the entered mail after processing is complete.
 
+## Snapshot
+![Home page](./client/src/assets/image.png)
+
 ## Tech Stack
 
 - **Front-end:** React, Tailwind CSS

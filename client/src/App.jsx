@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "./Components/Form";
 import Result from "./Components/Result";
 import Footer from "./Components/Footer";
+import TypewriterComponent from "typewriter-effect";
 
 function App(){
   const [result, setResult] = useState("");
@@ -26,7 +27,18 @@ function App(){
     <div className="App flex flex-col min-h-screen bg-gray-50">
 
       <div className="flex flex-grow flex-col justify-center items-center">
-        <h1 className="py-3 font-bold text-center text-3xl">Mashup</h1>
+        <div className="flex flex-col gap-2 py-5 ">
+          <h1 className="font-bold text-center text-3xl">Mashup</h1>  
+          <TypewriterComponent 
+            onInit={(typewriter)=>{
+              typewriter.typeString(
+                `<span class="text-blue-500">Blend your favorite tracks into a seamless mashup—download, mix, and create music magic from YouTube!</span>`
+              )
+              .start();
+            }}
+          />
+        </div>
+        
         <Form onSubmit={handleSubmit}/>
         {result && <Result result={result}/>}
       </div>
