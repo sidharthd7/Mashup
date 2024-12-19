@@ -3,3 +3,4 @@ __pycache__/
 .env
 .vscode/
 server/clipped/
+server/downloads/
